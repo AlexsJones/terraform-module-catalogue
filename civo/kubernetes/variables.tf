@@ -1,5 +1,6 @@
-resource "civotoken" {
-
+variable "civotoken" {
+  default = ""
+  type = string
 }
 
 variable "cluster_name" {

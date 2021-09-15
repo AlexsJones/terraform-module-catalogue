@@ -29,3 +29,4 @@ provider "helm" {
       yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).clusters[0].cluster.certificate-authority-data
     )
   }
+}
