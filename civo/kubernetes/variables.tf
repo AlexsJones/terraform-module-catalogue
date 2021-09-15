@@ -10,3 +10,7 @@ variable "cluster_name" {
 variable "cluster_nodes" {
   default = "3"
 }
+
+variable "region" {
+  default = "NYC1"
+}
