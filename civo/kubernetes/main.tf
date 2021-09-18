@@ -13,8 +13,8 @@ terraform {
 
 provider "kubernetes" {
   host     = civo_kubernetes_cluster.cluster.api_endpoint
-  username = yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).users[0].user.username
-  password = yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).users[0].user.password
+  client_key = yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).users[0].user.client-key-data
+  client_certificate = yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).users[0].user.client-certificate-data
   cluster_ca_certificate = base64decode(
     yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).clusters[0].cluster.certificate-authority-data
   )
@@ -23,8 +23,8 @@ provider "kubernetes" {
 provider "helm" {
   kubernetes {
     host     = civo_kubernetes_cluster.cluster.api_endpoint
-    username = yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).users[0].user.username
-    password = yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).users[0].user.password
+    client_key = yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).users[0].user.client-key-data
+    client_certificate = yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).users[0].user.client-certificate-data
     cluster_ca_certificate = base64decode(
       yamldecode(civo_kubernetes_cluster.cluster.kubeconfig).clusters[0].cluster.certificate-authority-data
     )
